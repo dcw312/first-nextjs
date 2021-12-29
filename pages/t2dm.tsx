@@ -5,6 +5,7 @@ import { useState } from 'react'
 import LoadingGuard from '../src/components/LoadingGuard'
 import Medications from '../src/components/Medications'
 import OrderDialog from '../src/components/OrderDialog'
+import QuestionRow from '../src/components/Question'
 import Questionaire from '../src/components/Questionaire'
 import useCarePlan from '../src/hooks/useCarePlan'
 import styles from '../styles/Home.module.css'
@@ -35,7 +36,7 @@ const Home: NextPage = () => {
         <div className={styles.grid}>
           <div className={styles.card}>Patient: David Wilson ({patientId})</div>
           <LoadingGuard loading={carePlan.loading} >
-              <Questionaire questionaire={carePlan.questionaire} />
+              <Questionaire questions={carePlan.questionaire} />            
               <Medications carePlan={carePlan.carePlan} />
           </LoadingGuard>
           <OrderDialog />

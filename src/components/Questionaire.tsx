@@ -1,10 +1,16 @@
 import React from 'react'
 import styles from '../../styles/Home.module.css'
+import { Question } from '../interfaces/care-plan-wrapper'
+import QuestionRow from './Question'
 
-function Questionaire(props : any) {
+type Props = {
+    questions: Question[]
+}
+
+function Questionaire({questions} : Props) {
     return (
         <div className={styles.card}>
-            Questionaire
+           {questions.map(q => <QuestionRow key={q.id} question={q} />)}
         </div>
     )
 }
