@@ -1,10 +1,13 @@
 import React from 'react'
 import styles from '../../styles/Home.module.css'
+import { CarePlan, CarePlanWrapper } from '../interfaces/care-plan-wrapper'
+import Medication from './Medication'
 
-function Medications(props : any) {
+function Medications(props: any) { 
+    const {medications} = props.carePlan as CarePlan
     return (
         <div className={styles.card}>
-            Medications for {props.carePlan.name}
+            {medications.map(m => <Medication key={m.id} medication={m} />) }
         </div>
     )
 }

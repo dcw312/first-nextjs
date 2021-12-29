@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from 'react'
+import { CarePlanWrapper } from '../interfaces/care-plan-wrapper';
 
-function useCarePlan() {
-  const [carePlanContext, setCarePlanContext] = useState({loading: true, carePlan: {}});
+function useCarePlan() : CarePlanWrapper {
+  const [carePlanContext, setCarePlanContext] = useState({
+    loading: true, 
+    carePlan: {},
+    questionaire: {}
+  } as CarePlanWrapper);
   
   useEffect(() => {
-    fetch("/api/hello")
+    fetch("/api/care-plan")
       .then(async (response) => {
         if (response.ok) {
             const newLocal = await response.json();
-            setCarePlanContext({loading: false, carePlan: {name: newLocal.name}})
+            setCarePlanContext(newLocal)
         }
     });
   }, []);
