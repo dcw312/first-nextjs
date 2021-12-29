@@ -10,7 +10,6 @@ import useCarePlan from '../src/hooks/useCarePlan'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
-  const carePlanContext = {questionaire: null, carePlan: null}
   const patientId = '2'
 
   const carePlan = useCarePlan()
@@ -36,8 +35,8 @@ const Home: NextPage = () => {
         <div className={styles.grid}>
           <div className={styles.card}>Patient: David Wilson ({patientId})</div>
           <LoadingGuard loading={carePlan.loading} >
-              <Questionaire questionaire={carePlanContext.questionaire} />
-              <Medications carePlan={carePlanContext.carePlan} />
+              <Questionaire questionaire={carePlan.questionaire} />
+              <Medications carePlan={carePlan.carePlan} />
           </LoadingGuard>
           <OrderDialog />
         </div>

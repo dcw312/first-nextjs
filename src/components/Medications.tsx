@@ -4,7 +4,7 @@ import styles from '../../styles/Home.module.css'
 function Medications(props : any) {
     return (
         <div className={styles.card}>
-            Medications
+            Medications for {props.carePlan.name}
         </div>
     )
 }
