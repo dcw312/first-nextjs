@@ -1,9 +1,20 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
+import { useState } from 'react'
+import LoadingGuard from '../src/components/LoadingGuard'
+import Medications from '../src/components/Medications'
+import OrderDialog from '../src/components/OrderDialog'
+import Questionaire from '../src/components/Questionaire'
+import useCarePlan from '../src/hooks/useCarePlan'
 import styles from '../styles/Home.module.css'
 
 const Home: NextPage = () => {
+  const carePlanContext = {questionaire: null, carePlan: null}
+  const patientId = '2'
+
+  const carePlan = useCarePlan()
+
   return (
     <div className={styles.container}>
       <Head>
@@ -23,7 +34,12 @@ const Home: NextPage = () => {
         </p>
 
         <div className={styles.grid}>
-          Grid
+          <div className={styles.card}>Patient: David Wilson ({patientId})</div>
+          <LoadingGuard loading={carePlan.loading} >
+              <Questionaire questionaire={carePlanContext.questionaire} />
+              <Medications carePlan={carePlanContext.carePlan} />
+          </LoadingGuard>
+          <OrderDialog />
         </div>
       </main>
 
