@@ -25,7 +25,7 @@ const Home: NextPage = () => {
   const patientId = '2'
 
   const carePlan = useCarePlan()
-  
+
   return (
     <div className={styles.container}>
       <Head>
@@ -39,18 +39,23 @@ const Home: NextPage = () => {
           T2DM
         </h1>
 
-        <p className={styles.description}>
-          Get started by editing{' '}
-          <code className={styles.code}>pages/index.tsx</code>
-        </p>
-
-        <Stack>
-          <Item>Patient: David Wilson ({patientId})</Item>
-          <LoadingGuard loading={carePlan.loading} >
-              <Questionaire questions={carePlan.questionaire} />            
-              <Medications carePlan={carePlan.carePlan} />
-          </LoadingGuard>
-          <OrderDialog />
+        <Stack direction='row' >
+          <Item>
+            <Stack>
+              <Item>Patient: David Wilson ({patientId})</Item>
+              <LoadingGuard loading={carePlan.loading} >
+                <Questionaire questions={carePlan.questionaire} />
+              </LoadingGuard>
+            </Stack>
+          </Item>
+          <Item>
+            <Stack>
+              <LoadingGuard loading={carePlan.loading} >
+                <Medications carePlan={carePlan.carePlan} />
+              </LoadingGuard>
+              <OrderDialog />
+            </Stack>
+          </Item>
         </Stack>
       </main>
 
@@ -66,7 +71,7 @@ const Home: NextPage = () => {
           </span>
         </a>
       </footer>
-    </div>
+    </div >
   )
 }
 
