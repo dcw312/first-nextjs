@@ -3,6 +3,7 @@
 const newLocal = {
     id: "1",
     login: "dwilso88",
+    name: "Joe",
     avatar_url: "http://example.com"
 };
 
