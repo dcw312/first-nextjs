@@ -1,5 +1,6 @@
 import React, { Children } from 'react'
 import PropTypes from 'prop-types'
+import { Item } from '../../pages/t2dm'
 
 interface LoadingGuardProps {
     loading: boolean
@@ -8,7 +9,7 @@ interface LoadingGuardProps {
 
 function LoadingGuard(props: LoadingGuardProps) {
     if (props.loading) {
-        return <div>Loading... </div>
+        return <Item>Loading... </Item>
     }
     return (
         <>
