@@ -30,7 +30,14 @@ function Questionaire({ questions }: Props) {
     return (
         <Item>
             <FormGroup>
-                {questions.map(q => <QuestionRow key={q.id} question={q} handleChange={handleChange} state={state} />)}
+                {questions.map(q => 
+                    <QuestionRow
+                        key={q.id}
+                        question={q}
+                        handleChange={handleChange}
+                        checked={state.get(q.id) as boolean}
+                    />
+                )}
             </FormGroup>
         </Item>
     )

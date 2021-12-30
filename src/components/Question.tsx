@@ -8,18 +8,18 @@ import { Question } from '../interfaces/care-plan-wrapper'
 type Props = {
     question: Question,
     handleChange: any,
-    state: Map<string, boolean>
+    checked: boolean
 }
 
 function QuestionRow({ 
     handleChange, 
     question,
-    state 
+    checked 
 }: Props) {
     return (
         <FormControlLabel
           control= {
-              <Switch checked={state.get(question.id)} onChange={handleChange} name={question.id} />
+              <Switch checked={checked} onChange={handleChange} name={question.id} />
           }
           label={question.text}
          />
