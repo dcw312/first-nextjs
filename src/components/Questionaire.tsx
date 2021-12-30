@@ -4,14 +4,34 @@ import styles from '../../styles/Home.module.css'
 import { Question } from '../interfaces/care-plan-wrapper'
 import QuestionRow from './Question'
 
+import FormGroup from '@mui/material/FormGroup';
+
+
 type Props = {
     questions: Question[]
 }
 
-function Questionaire({questions} : Props) {
+function Questionaire({ questions }: Props) {
+
+    // https://stackoverflow.com/a/11508490
+
+    const initialState = new Map<string, boolean>()
+
+    questions.map(q => initialState.set(q.id, q.answer))
+
+    const [state, setState] = React.useState(initialState);
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        const newState = new Map<string, boolean>(state)
+        newState.set(event.target.name, event.target.checked)
+        setState(newState);
+    };
+
     return (
         <Item>
-           {questions.map(q => <QuestionRow key={q.id} question={q} />)}
+            <FormGroup>
+                {questions.map(q => <QuestionRow key={q.id} question={q} handleChange={handleChange} state={state} />)}
+            </FormGroup>
         </Item>
     )
 }
