@@ -1,0 +1,23 @@
+type Question {
+  answer: Boolean
+  id: String
+  text: String
+}
+
+type Medication {
+  desc: String
+  id: String
+}
+
+type CarePlan {
+  medications: [Medication]
+  questionaire: [Question]
+}
+
+type Query {
+  getCarePlan: CarePlan
+}
+
+type Mutation {
+  updateQuestions(questions: [String]): CarePlan
+}
