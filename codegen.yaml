@@ -1,5 +1,8 @@
 schema: src/graphql/schema.graphql
 generates:
-  types.ts:
-    plugins:
-      - '@graphql-codegen/typescript'
+  src/graphql/client/models.ts:
+    - typescript
+    - typescript-operations
+  src/graphql/server/models.ts:
+    - typescript
+    - typescript-resolvers
