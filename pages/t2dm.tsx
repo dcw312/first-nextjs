@@ -20,6 +20,8 @@ import {
   gql
 } from "@apollo/client"
 import AddTodo from '../src/components/add-todo'
+import React from 'react'
+import { Question } from '../src/interfaces/care-plan-wrapper'
 
 
 export const Item = styled(Paper)(({ theme }) => ({
@@ -30,14 +32,22 @@ export const Item = styled(Paper)(({ theme }) => ({
 }));
 
 const Home: NextPage = () => {
+  const [answeredQuestions, setAnsweredQuestions] = useState([] as Question[]);
   const patientId = '2'
 
-  const carePlan = useCarePlan()
+  const carePlan = useCarePlan(answeredQuestions)
 
   const client = new ApolloClient({
     uri: 'http://localhost:3000/api/graphql',
     cache: new InMemoryCache()
   });
+
+  const handleAnsweredQuestion = (question: Question) => {
+    const newState = answeredQuestions.filter(q => q.id != question.id)
+    newState.push(question)
+    console.log(newState)
+    setAnsweredQuestions(newState)
+  }
 
   return (
     <ApolloProvider client={client}>
@@ -58,7 +68,7 @@ const Home: NextPage = () => {
               <Stack>
                 <Item>Patient: David Wilson ({patientId})</Item>
                 <LoadingGuard loading={carePlan.loading} >
-                  <Questionaire questions={carePlan.questionaire} />
+                  <Questionaire questions={carePlan.questionaire} handleAnswer={handleAnsweredQuestion} />
                 </LoadingGuard>
               </Stack>
             </Item>

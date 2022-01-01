@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { CarePlanWrapper } from '../interfaces/care-plan-wrapper';
+import { CarePlanWrapper, Question } from '../interfaces/care-plan-wrapper';
 
-function useCarePlan() : CarePlanWrapper {
+function useCarePlan(answeredQuestions : Question[]) : CarePlanWrapper {
   const [carePlanContext, setCarePlanContext] = useState({
     loading: true, 
     carePlan: {},
@@ -13,6 +13,7 @@ function useCarePlan() : CarePlanWrapper {
       .then(async (response) => {
         if (response.ok) {
             const newLocal = await response.json();
+            console.log(['update-care-plan', answeredQuestions, newLocal])
             setCarePlanContext(newLocal)
         }
     });

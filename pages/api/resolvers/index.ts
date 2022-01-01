@@ -24,6 +24,15 @@ const todos = [
         text: 'Hi Dave'
     }
 ]
+
+const medications = [{id: "med1", desc: "Insulin"}, {id: "med2", desc: "Trulicity"}]
+const questions = [{id: "A1C", text: "Hight A1C?", answer: false}, {id: "TrulicityAlrg", text: "Alergic to Trulicity?", answer: false}]
+
+
+const carePlan = {
+    medications: medications,
+    questionaire: questions
+}
   
 
 export const resolvers = {
@@ -34,6 +43,10 @@ export const resolvers = {
         getUser: (_: any, args: any) => {
             console.log(args)
             return newLocal
+        },
+        getCarePlan: (_: any, args: any) => {
+            console.log(args)
+            return carePlan
         }
     },
     Mutation: {
@@ -44,6 +57,10 @@ export const resolvers = {
         addTodo: (_: any, args: any) => {
             console.log(args)
             return todos[0]
+        },
+        updateQuestions: (_: any, args: any) => {
+            console.log(args)
+            return carePlan
         }
     }
 };

@@ -25,6 +25,21 @@ export const typeDefs = gql`
         text: String
     }
       
+    type Question {
+      id: String, 
+      text: String, 
+      answer: Boolean
+  }
+
+  type Medication {
+    id: String,
+    desc: String
+  }
+
+  type CarePlan {
+    medications: Medication[]
+    questionaire: Question[]
+}
 
     type  Query {
         getUsers: [User]
@@ -32,10 +47,8 @@ export const typeDefs = gql`
     }
     
     type Mutation {
-        addTodo(text: String!): ToDo 
-      }
-
-    type Mutation {
-        addBook(title: String, author: String): Book
+        addTodo(text: String!): ToDo ,
+        addBook(title: String, author: String): Book,
+        updateQuestions(questions: Question[]): CarePlan
       }
     `

@@ -8,10 +8,11 @@ import FormGroup from '@mui/material/FormGroup';
 
 
 type Props = {
-    questions: Question[]
+    questions: Question[],
+    handleAnswer: any
 }
 
-function Questionaire({ questions }: Props) {
+function Questionaire({ questions, handleAnswer }: Props) {
 
     // https://stackoverflow.com/a/11508490
 
@@ -24,6 +25,9 @@ function Questionaire({ questions }: Props) {
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const newState = new Map<string, boolean>(state)
         newState.set(event.target.name, event.target.checked)
+        const answeredQuestion = questions.filter(q => q.id == event.target.name)[0]
+        answeredQuestion.answer = event.target.checked
+        handleAnswer(answeredQuestion)
         setState(newState);
     };
 
