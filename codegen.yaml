@@ -1,8 +1,8 @@
 schema: src/graphql/schema.graphql
 generates:
   src/graphql/client/models.ts:
-    - typescript
     - typescript-operations
+    - typed-document-node
   src/graphql/server/models.ts:
     - typescript
     - typescript-resolvers
