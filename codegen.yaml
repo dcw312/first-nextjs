@@ -1,8 +1,10 @@
-schema: src/graphql/schema.graphql
+schema: ./src/graphql/schema.graphql
+documents: ./src/graphql/*.graphql
 generates:
   src/graphql/client/models.ts:
-    - typescript-operations
-    - typed-document-node
-  src/graphql/server/models.ts:
-    - typescript
-    - typescript-resolvers
+    plugins:
+      - typescript
+      - typescript-operations
+      - typed-document-node
+  config:
+    withHooks: false
