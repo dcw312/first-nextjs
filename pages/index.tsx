@@ -3,6 +3,7 @@ import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import isPlainObject from 'is-plain-obj'
+import ReactMarkdown from 'react-markdown'
 
 const Home: NextPage = () => {
 
@@ -22,6 +23,10 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to <a href="https://nextjs.org">Next.js</a>, {greeting} 
         </h1>
+
+        <p>
+        <ReactMarkdown># Hello, *world*!</ReactMarkdown>
+        </p>
 
         <p className={styles.description}>
           Get started by editing{' '}
