@@ -18,6 +18,7 @@ type Query {
   getCarePlan: CarePlan
 }
 
+
 type Mutation {
   updateQuestions(questions: [String]): CarePlan
 }

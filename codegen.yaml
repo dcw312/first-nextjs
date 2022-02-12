@@ -1,10 +1,8 @@
 schema: ./src/graphql/schema.graphql
-documents: ./src/graphql/*.graphql
 generates:
-  src/graphql/client/models.ts:
-    plugins:
-      - typescript
-      - typescript-operations
-      - typed-document-node
-  config:
-    withHooks: false
+      src/graphql/type-policies.ts:
+        plugins:
+          - typescript-apollo-client-helpers
+      src/graphql/types.ts:
+        plugins:
+          - '@graphql-codegen/typescript'
