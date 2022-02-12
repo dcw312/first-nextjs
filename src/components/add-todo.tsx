@@ -14,7 +14,7 @@ function AddTodo() {
     var input: any
     const [addTodo, { data, loading, error }] = useMutation(ADD_TODO)
   
-    if (loading) return <div>'Submitting...'</div>;
+    if (loading) return <div>{'Submitting...'}</div>;
     if (error) return <div>{`Submission error! ${error.message}`}</div>;
   
     return (
